@@ -55,7 +55,7 @@ def landOnPlanet(app):
                 planet.asked = True
 
 def drawPopUpWindow(app): 
-    image = CMUImage(Image.open('popupback.jpg'))
+    image = CMUImage(Image.open('images/popupback.jpg'))
     drawImage(image, app.width/2, app.height/2, width = 500, height = 170, align = 'center')
     drawLabel(f'Do you want to land on {app.canLandPlanet}?', app.width/2, 320,
               size = 20, font = 'orbitron', fill = 'white', bold = True)
@@ -69,13 +69,13 @@ def onAppStart(app):
     restart(app)
 
 def restart(app):
-    app.juIm = CMUImage(Image.open('jupiter.png'))
-    app.maIm = CMUImage(Image.open('mars.png'))
-    app.veIm = CMUImage(Image.open('venus.png'))
-    app.neIm = CMUImage(Image.open('neptune.png'))
-    app.backgroundImage = CMUImage(Image.open('background.jpg'))
-    app.blackHoleImage = CMUImage(Image.open('blackhole.png'))
-    app.healthBarImage = CMUImage(Image.open('healthbar.png'))
+    app.juIm = CMUImage(Image.open('images/jupiter.png'))
+    app.maIm = CMUImage(Image.open('images/mars.png'))
+    app.veIm = CMUImage(Image.open('images/venus.png'))
+    app.neIm = CMUImage(Image.open('images/neptune.png'))
+    app.backgroundImage = CMUImage(Image.open('images/background.jpg'))
+    app.blackHoleImage = CMUImage(Image.open('images/blackhole.png'))
+    app.healthBarImage = CMUImage(Image.open('images/healthbar.png'))
     app.steps = 10
     app.auto = False
     app.autoTimer = 0
@@ -515,7 +515,7 @@ def space_redrawAll(app):
         drawGameOver(app)
 
 def drawMenu(app):
-    drawImage(CMUImage(Image.open('popupback.jpg')), 400, 385, 
+    drawImage(CMUImage(Image.open('images/popupback.jpg')), 400, 385, 
               width=350, height=430, align='center')
     drawLabel('STATUS', 400, 195, size = 30, fill = 'white', bold=True, font='orbitron')
     drawLabel('Rocket Power:', 365, 260, size = 23, fill = 'gold', bold=True, font='orbitron')
@@ -532,7 +532,7 @@ def drawMenu(app):
     #     drawLabel(f'{-app.rocketYSpeed} km/h', 460, 505, size = 23, fill = 'lightgreen', bold=True, font='orbitron')
 
 def drawGameOver(app):
-    drawImage(CMUImage(Image.open('popupback.jpg')), 400, 350, 
+    drawImage(CMUImage(Image.open('images/popupback.jpg')), 400, 350, 
               width=550, height=200, align='center')
     app.gameOverButton.draw()
     if app.fuelDie:
@@ -553,7 +553,7 @@ def Jupiter_onScreenActivate(app):
     app.add = False
 
 def Jupiter_redrawAll(app):
-    drawImage(CMUImage(Image.open('jupiterland.jpg')), 0, 0, width = app.width, height = app.height)
+    drawImage(CMUImage(Image.open('images/jupiterland.jpg')), 0, 0, width = app.width, height = app.height)
     app.exitButton.draw()
     if app.newStorm != None:
         app.newStorm.draw()
@@ -614,10 +614,10 @@ def Mars_onScreenActivate(app):
     app.mine = Mine('MARS', app.mineMax)
     app.mTimer = 0
     app.add = False
-    app.saplingImage = CMUImage(Image.open('sapling.png'))
+    app.saplingImage = CMUImage(Image.open('images/sapling.png'))
 
 def Mars_redrawAll(app):
-    drawImage(CMUImage(Image.open('marsland.png')), 0, 0, width = app.width, height = app.height)
+    drawImage(CMUImage(Image.open('images/marsland.png')), 0, 0, width = app.width, height = app.height)
     app.exitButton.draw()
     for plant in app.marsPlants:
         headLoc = plant[0]
@@ -665,9 +665,9 @@ def Venus_onScreenActivate(app):
     app.QA = VenusQA()
 
 def Venus_redrawAll(app):
-    drawImage(CMUImage(Image.open('venusland.jpg')), 0, 0,
+    drawImage(CMUImage(Image.open('images/venusland.jpg')), 0, 0,
               width = app.width, height = app.height)
-    drawImage(CMUImage(Image.open('venusgod.png')), 380, 425, 
+    drawImage(CMUImage(Image.open('images/venusgod.png')), 380, 425, 
               width = 280, height = 500, align='center')
     drawLabel('Welcome to Venus!', 400, 60, size = 26, fill='white',bold=True, font='orbitron')
     drawLabel('Answer me three questions, and I will let you go.', 
@@ -682,9 +682,9 @@ def vQA_onScreenActivate(app):
     app.QA.generateQA()
 
 def vQA_redrawAll(app):
-    drawImage(CMUImage(Image.open('venusland.jpg')), 0, 0,
+    drawImage(CMUImage(Image.open('images/venusland.jpg')), 0, 0,
               width = app.width, height = app.height)
-    drawImage(CMUImage(Image.open('venusgod.png')), 200, 425, 
+    drawImage(CMUImage(Image.open('images/venusgod.png')), 200, 425, 
               width = 250, height = 450, align='center')
     app.QA.QAdraw()
 
@@ -692,11 +692,11 @@ def vQA_onMousePress(app, mx, my):
     app.QA.mouseControl(mx, my, app)
 
 def VenusEnd_redrawAll(app):
-    drawImage(CMUImage(Image.open('venusland.jpg')), 0, 0,
+    drawImage(CMUImage(Image.open('images/venusland.jpg')), 0, 0,
               width = app.width, height = app.height)
-    drawImage(CMUImage(Image.open('venusgod.png')), 275, 425, 
+    drawImage(CMUImage(Image.open('images/venusgod.png')), 275, 425, 
               width = 280, height = 500, align='center')
-    drawImage(CMUImage(Image.open('jewel.png')), 575, 560, 
+    drawImage(CMUImage(Image.open('images/jewel.png')), 575, 560, 
               width = 200, height = 200, align='center')
     app.exitButton.draw()
     app.QA.endDraw()
@@ -715,9 +715,9 @@ def Neptune_onScreenActivate(app):
     app.QA = NeptuneQA()
 
 def Neptune_redrawAll(app):
-    drawImage(CMUImage(Image.open('neptuneland.jpg')), 0, 0,
+    drawImage(CMUImage(Image.open('images/neptuneland.jpg')), 0, 0,
               width = app.width, height = app.height)
-    drawImage(CMUImage(Image.open('neptunegod.png')), 380, 425, 
+    drawImage(CMUImage(Image.open('images/neptunegod.png')), 380, 425, 
               width = 435, height = 500, align='center')
     drawLabel('Welcome to Neptune!', 400, 60, size = 26, fill='white',bold=True, font='orbitron')
     drawLabel('Answer me three questions, and I will let you go.', 
@@ -732,9 +732,9 @@ def nQA_onScreenActivate(app):
     app.QA.generateQA()
 
 def nQA_redrawAll(app):
-    drawImage(CMUImage(Image.open('neptuneland.jpg')), 0, 0,
+    drawImage(CMUImage(Image.open('images/neptuneland.jpg')), 0, 0,
               width = app.width, height = app.height)
-    drawImage(CMUImage(Image.open('neptunegod.png')), 260, 410, 
+    drawImage(CMUImage(Image.open('images/neptunegod.png')), 260, 410, 
               width = 390, height = 450, align='center')
     app.QA.QAdraw()
 
@@ -742,11 +742,11 @@ def nQA_onMousePress(app, mx, my):
     app.QA.mouseControl(mx, my, app)
 
 def NeptuneEnd_redrawAll(app):
-    drawImage(CMUImage(Image.open('neptuneland.jpg')), 0, 0,
+    drawImage(CMUImage(Image.open('images/neptuneland.jpg')), 0, 0,
               width = app.width, height = app.height)
-    drawImage(CMUImage(Image.open('neptunegod.png')), 275, 425, 
+    drawImage(CMUImage(Image.open('images/neptunegod.png')), 275, 425, 
               width = 435, height = 500, align='center')
-    drawImage(CMUImage(Image.open('jewel.png')), 615, 580, 
+    drawImage(CMUImage(Image.open('images/jewel.png')), 615, 580, 
               width = 200, height = 200, align='center')
     app.exitButton.draw()
     app.QA.endDraw()

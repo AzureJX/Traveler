@@ -54,7 +54,7 @@ class Black_Hole(Object):
 class Rocket(Object):    
     def __init__(self, d, v, m, r):
         super().__init__(d, v)
-        self.image = CMUImage(Image.open('rocket.png'))
+        self.image = CMUImage(Image.open('images/rocket.png'))
         self.m = m
         self.r = r
         self.width = 90
@@ -127,7 +127,7 @@ class Button:
         self.w = w
         self.h = h
         self.text = text
-        self.image = CMUImage(Image.open('button.png'))
+        self.image = CMUImage(Image.open('images/button.png'))
         self.size = size
     
     def draw(self):
@@ -152,7 +152,7 @@ class Exit_Button(Button):
         self.cy = 50
         self.w = 50
         self.h = 50
-        self.image = CMUImage(Image.open('exitbutton.png'))
+        self.image = CMUImage(Image.open('images/exitbutton.png'))
 
 class Pause_Button(Button):
     def __init__(self, cx, cy, w, h):
@@ -165,9 +165,9 @@ class Pause_Button(Button):
         
     def draw(self):
         if not self.paused:
-            image = CMUImage(Image.open('pause.png'))
+            image = CMUImage(Image.open('images/pause.png'))
         else:
-            image = CMUImage(Image.open('paused.png'))
+            image = CMUImage(Image.open('images/paused.png'))
         drawImage(image, self.cx, self.cy, width = self.w, height = self.h, align = 'center')
 
 class GameOver_Button(Button):
@@ -204,7 +204,7 @@ class Storm:
     def __init__(self, cx, cy):
         self.r = 2
         self.opacity = 100
-        self.image = CMUImage(Image.open('storm.png'))
+        self.image = CMUImage(Image.open('images/storm.png'))
         self.cx = cx
         self.cy = cy
     
@@ -228,7 +228,7 @@ class Mine:
         self.max = max
     
     def draw(self):
-        drawImage(CMUImage(Image.open('mine.png')),
+        drawImage(CMUImage(Image.open('images/mine.png')),
                   50, 400, width = 270, height = 200)
         self.mineButton.draw()
         if self.mine and 0 < self.mineProgress < 100:
